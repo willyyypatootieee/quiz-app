@@ -32,7 +32,15 @@ class StartScreen extends StatelessWidget {
           const SizedBox(height: 20),
           FilledButton.tonal(
             onPressed: () {},
-            child: const Text('Start Quiz!'),
+            style: FilledButton.styleFrom(
+              backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+              foregroundColor: const Color.fromARGB(255, 0, 0, 0),
+            ),
+            // onPressed: () => Navigator.of(context).pushNamed('/questions'),
+            child: const Text(
+              'Start Quiz!',
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            ),
           ),
         ],
       ),
