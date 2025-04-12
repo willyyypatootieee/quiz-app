@@ -4,5 +4,5 @@ import 'start_screen.dart';
 import 'question_screen.dart';
 
 void main() {
-  runApp(const Quiz());
+  runApp(Quiz());
 }

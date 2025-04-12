@@ -13,16 +13,19 @@ class Quiz extends StatefulWidget {
 }
 
 class _QuizState extends State<Quiz> {
-  Widget activeScreen = const StartScreen(switchScreen);
+  Widget?
+  activeScreen; // Iniasialisasi Apakah Widget aktif termaasuk null atau bukan.
+  // ? menanyakan dart apakah variabel tersebut null atau bukan.
+  // Jika null maka akan menampilkan widget yang lain.
 
   /// A function that switches the active screen to the question screen.
   @override
   void initState() {
     // TODO: implement initState
-    super.initState();
+    super.initState(); // Harus dilakukan sebelum melakukan activescreen.
+    activeScreen = StartScreen(switchScreen);
   }
 
-  
   void switchScreen() {
     setState(() {
       activeScreen = const QuestionsScreen();
