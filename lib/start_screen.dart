@@ -9,7 +9,7 @@ class StartScreen extends StatelessWidget {
   /// Creates a new instance of [StartScreen].
   @override
   Widget build(context) {
-    return const Center(
+    return Center(
       child: Column(
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -19,7 +19,7 @@ class StartScreen extends StatelessWidget {
             width: 200,
             height: 200,
           ),
-          SizedBox(height: 80),
+          const SizedBox(height: 80),
           Text(
             textAlign: TextAlign.center,
             'Flutter: Quiz App',
@@ -28,6 +28,11 @@ class StartScreen extends StatelessWidget {
               fontWeight: FontWeight.bold,
               color: Color.fromARGB(255, 255, 255, 255),
             ),
+          ),
+          const SizedBox(height: 20),
+          FilledButton.tonal(
+            onPressed: () {},
+            child: const Text('Start Quiz!'),
           ),
         ],
       ),
