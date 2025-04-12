@@ -11,11 +11,23 @@ class StartScreen extends StatelessWidget {
   Widget build(context) {
     return const Center(
       child: Column(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Image(
             image: AssetImage('assets/images/quiz-logo.png'),
             width: 200,
             height: 200,
+          ),
+          SizedBox(height: 80),
+          Text(
+            textAlign: TextAlign.center,
+            'Flutter: Quiz App',
+            style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+              color: Color.fromARGB(255, 255, 255, 255),
+            ),
           ),
         ],
       ),
