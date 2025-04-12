@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 /// It is currently empty and does not contain any widgets or functionality.
 
 class StartScreen extends StatelessWidget {
-  const StartScreen({super.key});
+  const StartScreen(this.startQuiz, {super.key});
+
+  final void Function() startQuiz;
 
   /// Creates a new instance of [StartScreen].
   @override
@@ -31,7 +33,7 @@ class StartScreen extends StatelessWidget {
           ),
           const SizedBox(height: 20),
           FilledButton.icon(
-            onPressed: () {},
+            onPressed: startQuiz,
             style: FilledButton.styleFrom(
               backgroundColor: const Color.fromARGB(255, 255, 255, 255),
               foregroundColor: const Color.fromARGB(255, 0, 0, 0),
