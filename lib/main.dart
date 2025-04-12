@@ -1,23 +1,24 @@
 import 'package:flutter/material.dart';
-import 'styled_text.dart';
+import 'start_screen.dart';
 
 void main() {
   runApp(
     MaterialApp(
       home: Scaffold(
         body: Container(
-          width: double.infinity,
-          height: double.infinity,
-          color: Colors.deepPurple,
-          child: Center(
-            child: Image.asset(
-              'assets/images/quiz-logo.png',
-              width: 200, // Try 150–250 depending on your design
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Color.fromARGB(255, 61, 46, 86),
+                Color.fromARGB(255, 101, 47, 186),
+              ],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
             ),
           ),
+          child: const StartScreen(),
         ),
       ),
-      debugShowCheckedModeBanner: false,
     ),
   );
 }
