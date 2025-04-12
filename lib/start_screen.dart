@@ -9,6 +9,16 @@ class StartScreen extends StatelessWidget {
   /// Creates a new instance of [StartScreen].
   @override
   Widget build(context) {
-    return const Center(child: Text("Start Screen"));
+    return const Center(
+      child: Column(
+        children: [
+          Image(
+            image: AssetImage('assets/images/quiz-logo.png'),
+            width: 200,
+            height: 200,
+          ),
+        ],
+      ),
+    );
   }
 }
