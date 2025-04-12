@@ -13,26 +13,25 @@ class Quiz extends StatefulWidget {
 }
 
 class _QuizState extends State<Quiz> {
-  Widget?
-  activeScreen; // Iniasialisasi Apakah Widget aktif termaasuk null atau bukan.
-  // ? menanyakan dart apakah variabel tersebut null atau bukan.
-  // Jika null maka akan menampilkan widget yang lain.
+  var activeScreen = 'start-screen';
 
-  /// A function that switches the active screen to the question screen.
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState(); // Harus dilakukan sebelum melakukan activescreen.
-    activeScreen = StartScreen(switchScreen);
-  }
+  /// Initializes the state of the quiz application.
 
   void switchScreen() {
     setState(() {
-      activeScreen = const QuestionsScreen();
+      activeScreen = 'question-screen';
     });
   }
 
+  @override
+  /// Builds the widget tree for the quiz application.
+  /// It determines which screen to display based on the current state.
   Widget build(context) {
+    Widget screenWidget = StartScreen(switchScreen);
+    if (activeScreen == 'question-screen') {
+      // screenWidget = const QuestionsScreen();
+      screenWidget = const QuestionsScreen();
+    }
     return MaterialApp(
       home: Scaffold(
         body: Container(
@@ -46,7 +45,7 @@ class _QuizState extends State<Quiz> {
               end: Alignment.bottomRight,
             ),
           ),
-          child: activeScreen,
+          child: screenWidget,
         ),
       ),
     );
