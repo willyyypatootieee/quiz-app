@@ -13,6 +13,9 @@ class Quiz extends StatefulWidget {
 }
 
 class _QuizState extends State<Quiz> {
+  // memilih jawaban yang benar
+  // it will be fix, and will be assignment
+  final List<String> selectedAnswers = [];
   var activeScreen = 'start-screen';
 
   /// Initializes the state of the quiz application.
@@ -23,6 +26,14 @@ class _QuizState extends State<Quiz> {
     });
   }
 
+  // it will executed when the user click the answer button.
+  // this function will be called when the user click the answer button.
+  // from question_screen widget
+
+  void chooseAnswer(String answer) {
+    selectedAnswers.add(answer);
+  }
+
   @override
   /// Builds the widget tree for the quiz application.
   /// It determines which screen to display based on the current state.
@@ -30,7 +41,7 @@ class _QuizState extends State<Quiz> {
     Widget screenWidget = StartScreen(switchScreen);
     if (activeScreen == 'question-screen') {
       // screenWidget = const QuestionsScreen();
-      screenWidget = const QuestionsScreen();
+      screenWidget = QuestionsScreen(onSelectAnswer: chooseAnswer);
     }
     return MaterialApp(
       home: Scaffold(
