@@ -1,10 +1,14 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:quiz_app/question_screen.dart';
-
 class QuizQuestions {
   const QuizQuestions(this.text, this.answers);
 
+  void shuffle() {
+    answers.shuffle();
+  }
+
   final String text;
   final List<String> answers;
+
+  List<String> getShuffledAnswers() {
+    List.of(answers).shuffle();
+  }
 }
