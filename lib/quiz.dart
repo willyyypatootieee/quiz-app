@@ -15,7 +15,7 @@ class Quiz extends StatefulWidget {
 
 class _QuizState extends State<Quiz> {
   // List untuk menyimpan jawaban yang dipilih user
-  final List<String> selectedAnswers = [];
+  List<String> selectedAnswers = [];
 
   // Menentukan screen yang aktif: start atau question
   var activeScreen = 'start-screen';
@@ -34,6 +34,8 @@ class _QuizState extends State<Quiz> {
     // Jika jumlah jawaban yang dipilih sama dengan jumlah soal, kembali ke start screen
     if (selectedAnswers.length == questions.length) {
       setState(() {
+        selectedAnswers = [];
+        // Kembali ke start screen setelah semua jawaban dipilih
         activeScreen = 'start-screen';
       });
     }
