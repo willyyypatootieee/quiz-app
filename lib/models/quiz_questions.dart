@@ -8,5 +8,3 @@ class QuizQuestions {
   final String text;
   final List<String> answers;
 }
-
-
