@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'start_screen.dart';
 import 'question_screen.dart';
+import 'data/questions.dart';
 
 class Quiz extends StatefulWidget {
   Quiz({super.key});
@@ -13,36 +14,43 @@ class Quiz extends StatefulWidget {
 }
 
 class _QuizState extends State<Quiz> {
-  // memilih jawaban yang benar
-  // it will be fix, and will be assignment
+  // List untuk menyimpan jawaban yang dipilih user
   final List<String> selectedAnswers = [];
+
+  // Menentukan screen yang aktif: start atau question
   var activeScreen = 'start-screen';
 
-  /// Initializes the state of the quiz application.
-
+  /// Fungsi untuk mengganti screen ke question screen
   void switchScreen() {
     setState(() {
       activeScreen = 'question-screen';
     });
   }
 
-  // it will executed when the user click the answer button.
-  // this function will be called when the user click the answer button.
-  // from question_screen widget
-
+  /// Fungsi ini dipanggil saat user memilih jawaban
   void chooseAnswer(String answer) {
     selectedAnswers.add(answer);
+
+    // Jika jumlah jawaban yang dipilih sama dengan jumlah soal, kembali ke start screen
+    if (selectedAnswers.length == questions.length) {
+      setState(() {
+        activeScreen = 'start-screen';
+      });
+    }
   }
 
   @override
-  /// Builds the widget tree for the quiz application.
-  /// It determines which screen to display based on the current state.
+  /// Membangun UI aplikasi berdasarkan screen yang aktif
   Widget build(context) {
+    // Default screen adalah StartScreen
     Widget screenWidget = StartScreen(switchScreen);
+
+    // Jika activeScreen adalah question-screen, ganti widgetnya
     if (activeScreen == 'question-screen') {
-      // screenWidget = const QuestionsScreen();
       screenWidget = QuestionsScreen(onSelectAnswer: chooseAnswer);
     }
+
+    // Return tampilan dengan background gradient dan screen yang sesuai
     return MaterialApp(
       home: Scaffold(
         body: Container(
