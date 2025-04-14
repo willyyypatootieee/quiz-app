@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'start_screen.dart';
 import 'question_screen.dart';
 import 'data/questions.dart';
+import 'results_screen.dart';
 
 class Quiz extends StatefulWidget {
   Quiz({super.key});
@@ -34,9 +35,8 @@ class _QuizState extends State<Quiz> {
     // Jika jumlah jawaban yang dipilih sama dengan jumlah soal, kembali ke start screen
     if (selectedAnswers.length == questions.length) {
       setState(() {
-        selectedAnswers = [];
-        // Kembali ke start screen setelah semua jawaban dipilih
-        activeScreen = 'start-screen';
+        // Di arahkan ke results screen untuk hasil.
+        activeScreen = 'results-screen';
       });
     }
   }
@@ -50,6 +50,10 @@ class _QuizState extends State<Quiz> {
     // Jika activeScreen adalah question-screen, ganti widgetnya
     if (activeScreen == 'question-screen') {
       screenWidget = QuestionsScreen(onSelectAnswer: chooseAnswer);
+    }
+
+    if (activeScreen == 'results-screen') {
+      screenWidget = ResultsScreen(chosenAnswers: selectedAnswers);
     }
 
     // Return tampilan dengan background gradient dan screen yang sesuai
