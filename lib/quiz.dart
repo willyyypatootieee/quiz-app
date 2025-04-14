@@ -5,7 +5,7 @@ import 'data/questions.dart';
 import 'results_screen.dart';
 
 class Quiz extends StatefulWidget {
-  Quiz({super.key});
+  const Quiz({super.key});
 
   /// Creates a new instance of [Quiz].
   @override
@@ -49,7 +49,15 @@ class _QuizState extends State<Quiz> {
 
     // Jika activeScreen adalah question-screen, ganti widgetnya
     if (activeScreen == 'question-screen') {
-      screenWidget = QuestionsScreen(onSelectAnswer: chooseAnswer);
+      screenWidget = QuestionsScreen(
+        onSelectAnswer: chooseAnswer,
+        onRestartQuiz: () {
+          setState(() {
+            selectedAnswers = [];
+            activeScreen = 'start-screen';
+          });
+        },
+      );
     }
 
     if (activeScreen == 'results-screen') {

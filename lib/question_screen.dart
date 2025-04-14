@@ -3,9 +3,14 @@ import 'answer_button.dart';
 import 'data/questions.dart';
 
 class QuestionsScreen extends StatefulWidget {
-  const QuestionsScreen({super.key, required this.onSelectAnswer});
+  const QuestionsScreen({
+    super.key,
+    required this.onSelectAnswer,
+    required this.onRestartQuiz,
+  });
 
   final void Function(String answer) onSelectAnswer;
+  final void Function() onRestartQuiz;
 
   @override
   State<QuestionsScreen> createState() {
@@ -55,6 +60,18 @@ class _QuestionScreenState extends State<QuestionsScreen> {
                 },
               );
             }),
+            const SizedBox(height: 30),
+            ElevatedButton(
+              onPressed: widget.onRestartQuiz,
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.red,
+                foregroundColor: Colors.white,
+              ),
+              child: const Text(
+                'Restart Quiz',
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              ),
+            ),
           ],
         ),
       ),
